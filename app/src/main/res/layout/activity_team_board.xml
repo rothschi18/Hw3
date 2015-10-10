@@ -1,0 +1,151 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="edu.up.cs371.schmidtj.football.TeamBoard">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout5"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="#ff08dfff"
+                android:text="Name" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="#ff08dfff"
+                android:text="Goals" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:background="#ff08dfff"
+                android:text="Assists"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/linearLayout2"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/playerName"
+                android:background="#ff00ffa6"/>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/playerAssists"
+                android:background="#ff00ffa6"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:minWidth="100dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/playerGoals"
+                android:background="#ff00ffa6"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout3"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="Add A Player"
+            android:minWidth="100dp"
+            android:minHeight="100dp"
+            android:id="@+id/createPlayer"
+            android:textSize="25dp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="return"
+        android:id="@+id/return_back"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="50dp"
+        android:onClick="return_back_click"/>
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="375dp"
+        android:id="@+id/playerImage"
+        android:src="@drawable/orange_butterfly"
+        android:scaleType="fitCenter"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/imagePlayerSelector"
+        android:layout_alignStart="@+id/imagePlayerSelector" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/playerSpinner"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/imageTeamSelector"
+        android:layout_toStartOf="@+id/imageTeamSelector" />
+
+    <Spinner
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imagePlayerSelector"
+        android:spinnerMode="dropdown"
+        android:longClickable="true"
+        android:textSize="50sp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignRight="@+id/linearLayout"
+        android:layout_alignEnd="@+id/linearLayout" />
+
+</RelativeLayout>
