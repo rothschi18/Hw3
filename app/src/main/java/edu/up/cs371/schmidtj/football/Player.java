@@ -14,10 +14,10 @@ import java.io.Serializable;
  */
 public class Player implements Serializable{
     //Variable definitions to hold data for a Player
-    private String playersFullName;
-    private int Goals;
-    private int Assists;
-    private String imageID;
+    private String playersFullName; //Used to keep track of the players full name
+    private int Goals;              //Used to keep track of the players goals
+    private int Assists;            //Used to keep track of the players assists
+    private String imageID;         //Used to keep track of the players image
 
     /**
      * Constructor: Player

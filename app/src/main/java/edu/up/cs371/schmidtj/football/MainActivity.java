@@ -39,14 +39,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public EditText teamName; //User can input the name of a team
 
     public ArrayList<String> listOfTeams; //declare an ArrayList of teams
-    public ArrayList<String> listImageSelector;
+    public ArrayList<String> listImageSelector; //Holds the string names of the images for the teams
 
-    public Spinner teamSpinner; //stores the list of teams
-    public Spinner imageTeamSelector;
+    public Spinner teamSpinner; //stores the list of teams, and lets the user pick a team from the spinner
+    public Spinner imageTeamSelector; // stores images and allows the user to select an image
 
     public HashMap<String,Team> Teams; //declare a hashmap of <key, Value> where key is a string that will reference to a certain team
 
     @Override
+    /**
+     * Method: onCreate
+     *
+     * Purpose: Method is called on the creation of this activity, and initializes all of the variables to their respective values
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -223,7 +228,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     * l:	        The row id of the item that is selected
     *
     * Purpose: Upon selection of an item from the spinner, the method will display the textViews of the main activity
-    *          to all of the values of the object clicked
+    *          to all of the values of the object clicked, or it will display the image of the selected value on the button
+     *         clickToTeamRoster
      */
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         //check if the selection was made from the teamSpinner, if it was, set all of the text fields to their respective values

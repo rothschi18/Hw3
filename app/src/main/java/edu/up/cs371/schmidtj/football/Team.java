@@ -15,13 +15,13 @@ import java.util.HashMap;
  */
 public class Team implements Serializable{
     //Variables to hold data of a team
-    private String teamsName;
-    private int gamesWins;
-    private int gamesPlayed;
-    private int gamesLost;
-    private String imageID;
-    public ArrayList<String> playerList;
-    private HashMap<String,Player> teamRoster;
+    private String teamsName; //The Teams name
+    private int gamesWins;    //The number of wins a team has
+    private int gamesPlayed;  //The number of games a team has played
+    private int gamesLost;    //The number of games a team has lost
+    private String imageID;   //The image for a team
+    public ArrayList<String> playerList;    //Keep track of the list of players for a team
+    private HashMap<String,Player> teamRoster; //Have a teamRoster that Maps a string key to a Player value
 
     /**
      * Constructor: Team

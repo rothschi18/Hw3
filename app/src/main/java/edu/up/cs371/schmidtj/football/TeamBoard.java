@@ -20,32 +20,40 @@ import java.util.ArrayList;
 
 /**
  * Class: TeamBoard
+ *
+ * Purpose: Displays a team and gives options to add a player to the team
  */
 public class TeamBoard extends ActionBarActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener{
 
+    //Variable definitions for the TeamBoard
 
-    Intent intent;
-    ImageView playerImage;
+    Intent intent;  //This intent is used to pass information back to the MainActivity
+    ImageView playerImage; //This ImageView is used to display the image of a player from the team that is passed into this activity
 
-    public EditText playerGoals;
-    public EditText playerAssists;
-    public EditText playerName;
+    public EditText playerGoals; //Allows the user to create a player, and customize the goals the player has scored
+    public EditText playerAssists;//Allows the user to create a player, and customize the assists the player has earned
+    public EditText playerName;//Allows the user to create a player, and customize the name of the player
 
-    public Button addAnotherPlayer;
+    public Button addAnotherPlayer; //Declare a button to allow the user to add another player
 
-    public Team theTeam;
+    public Team theTeam; //This variable is used to store the team that is passed in from the MainActivity
 
-    public Spinner playerSpinner;
-    public Spinner imagePlayerSelector;
+    public Spinner playerSpinner; //Used to store the players of the team passed in and allow the user to select from that list.
+    public Spinner imagePlayerSelector; //Stores the images that are possible for players, and lets the user select from them
 
-    public ArrayList<String> listImageSelector;
+    public ArrayList<String> listImageSelector; //Stores the names of the pictures that are possible to select from
 
     @Override
+    /**
+     * Method: onCreate
+     *
+     * Purpose: Method is called on the creation of this activity, and initializes all of the variables to their respective values
+     */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_team_board);
 
-        addAnotherPlayer= (Button) findViewById(R.id.createPlayer);
+        addAnotherPlayer = (Button) findViewById(R.id.createPlayer);
         addAnotherPlayer.setOnClickListener(this);
 
         playerGoals= (EditText) findViewById(R.id.playerGoals);
@@ -87,6 +95,12 @@ public class TeamBoard extends ActionBarActivity implements View.OnClickListener
         imagePlayerSelector.setOnItemSelectedListener(this);
     }
 
+    /**
+     * Method: return_back_click
+     *
+     * Purpose: return back to the main Activity, and pass the team that was being manipulated back to main
+     * @param view The button that was clicked
+     */
     public void return_back_click(View view)
     {
         intent.putExtra("returnATeam",theTeam);
@@ -95,14 +109,20 @@ public class TeamBoard extends ActionBarActivity implements View.OnClickListener
     }
 
     @Override
+    /**
+     * Method: onClick
+     *
+     * Purpose: Handle touch events for the TeamBoard activity
+     *
+     */
     public void onClick(View view) {
-
+        //if the user wants to add another player then perform the following code
         if(view == addAnotherPlayer)
         {
-
+            //Check to make sure none of the desired fields for setting the player data are empty
             if(String.valueOf(playerGoals.getText()).isEmpty() || String.valueOf(playerAssists.getText()).isEmpty() || String.valueOf(playerName.getText()).isEmpty())
                 return;
-
+            //If the player is not in the list of current players, create a new player object and add it to the list
             if(theTeam.playerList.indexOf(String.valueOf(playerName.getText())) == -1 )
             {
                 Player pTemp = new Player(String.valueOf(playerName.getText()), Integer.parseInt(String.valueOf(playerGoals.getText())), Integer.parseInt(String.valueOf(playerAssists.getText())));
@@ -111,6 +131,7 @@ public class TeamBoard extends ActionBarActivity implements View.OnClickListener
                 theTeam.addAPlayer(pTemp);
 
             }
+            //otherwise overwrite the existing players stats
             else
             {
                 theTeam.getPlayer(String.valueOf(playerName.getText())).setGoals( Integer.parseInt(String.valueOf(playerGoals.getText())) );
@@ -125,7 +146,20 @@ public class TeamBoard extends ActionBarActivity implements View.OnClickListener
     }
 
     @Override
+    /**
+     *
+     * Method: onItemSelected
+     *
+     * Purpose: When the user makes a selection from the either spinner, the method will display the stats of the player or the image of
+     *          the player depending on which spinner was chosen from
+     * Parameters
+     * adapterView:	The AdapterView where the selection happened
+     * view:	        The view within the AdapterView that was clicked
+     * i:	        The position of the view in the adapter
+     * l:	        The row id of the item that is selected
+     */
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        //If the adapterView is equal to the playerSpinner, then display the stats of the player
         if(adapterView == playerSpinner)
         {
             playerGoals.setText(String.valueOf(theTeam.getPlayer(playerSpinner.getSelectedItem().toString()).getGoals()));
@@ -138,6 +172,7 @@ public class TeamBoard extends ActionBarActivity implements View.OnClickListener
             int id = getResources().getIdentifier(this.getPackageName() + ":drawable/" +  theTeam.getPlayer(playerSpinner.getSelectedItem().toString()).getImageID(), null, null);
             playerImage.setImageResource(id);
         }
+        //if the adapterView is equal to the imagePlayerSelector then display the corresponding image of the player
         if(adapterView == imagePlayerSelector)
         {
             int id = getResources().getIdentifier(this.getPackageName() + ":drawable/" +  imagePlayerSelector.getSelectedItem().toString(), null, null);
